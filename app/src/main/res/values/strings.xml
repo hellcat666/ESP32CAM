@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">ESP32Camera</string>
+    <string name="title_appbar_esp32cam">ESP32Camera Version 1.5</string>
+    <string name="version">1.5.0</string>
+    <string name="dialog_fire_missiles"> Fire the Missile?</string>
+    <string name="fire">FIRE</string>
+    <string name="cancel">CANCEL</string>
+
+    <!-- Menu -->
+    <string name="exit">Exit</string>
+    <string name="settings">Settings</string>
+
+</resources>
+

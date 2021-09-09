@@ -1,0 +1,25 @@
+<html xmlns:zoom="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+        <script type="text/javascript" src="jquery-3.1.0/jquery-3.1.0.js"></script>
+    </head>
+    <script>
+        $(function() {
+            $(document).ready(function() {
+                console.log("DOCUMENT_READY: " + serverUrl);
+                // Send DOCUMENT_READY Notification to Android
+                try { Android.onDocumentReady(); }
+                catch(error) {}
+            });
+        });
+
+    </script>
+
+    <body id="body" onload="" style="margin: 0px; background: black;">
+        <div id="camera">
+            <img id="cameraId" src="img/no_camera_vertical.png" style="-webkit-user-select: none; width:100%; background:transparent; transform:rotate(90deg); object-fit: cover">
+        </div>
+    </body>
+
+</html>

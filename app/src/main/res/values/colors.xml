@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<color name="colorPrimary">#3F51B5</color>
+<color name="colorPrimaryDark">#303F9F</color>
+<color name="colorAccent">#FF4081</color>
+<color name="darkRed">#900000</color>
+<color name="lightRed">#FF0000</color>
+<color name="red">#ff0000</color>
+<color name="green">#00ff00</color>
+<color name="lightGreen">#00ff00</color>
+<color name="darkGreen">#009000</color>
+<color name="blue">#0048ff</color>
+<color name="darkBlue">#000090</color>
+<color name="purple">#8080ff</color>
+<color name="orange">#ffa500</color>
+<color name="yellow">#f8f008</color>
+<color name="black">#000000</color>
+<color name="white">#ffffff</color>
+<color name="darkGray">#505050</color>
+<color name="lightGray">#C0C0C0</color>
+<color name="sbprogress">#91a9ed</color>
+<color name="tbcolor0">#3e72a7</color>
+<color name="infobkg">#80808080</color>
+<color name="transparent">#40808080</color>
+</resources>

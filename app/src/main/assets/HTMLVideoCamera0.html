@@ -1,0 +1,304 @@
+<html xmlns:zoom="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+        <script type="text/javascript" src="jquery-3.1.0/jquery-3.1.0.js"></script>
+        <script type="text/javascript" src="ESP32Camera.js"></script>
+    </head>
+
+    <body id="body" onload="javascript:sendServerUrlInfo();" style="margin: 0px; background: black;">
+    <!-- img id="cameraId" -->
+    <img id="cameraId" src="" style="-webkit-user-select: none; width:100%; background:transparent; transform:rotate(90deg); object-fit: cover">
+    </body>
+
+    <script>
+            var serverUrl = "http://192.168.1.11";          // 'http://192.168.1.11';
+            var cameraStreamUrl = "http://192.168.1.11/mjpeg/1"; 	// 'http://192.168.1.11/mjpeg/1';
+            var cameraStatusUrl = "http://192.168.1.11/status";  	// 'http://192.168.1.11/status';
+
+            var camera;
+            const noCameraUrl = 'img/no_camera.png';
+            var intervalTimeout = 2000;
+            var fetchTimeout = 500;
+            var cameraActive = false;
+            $(function() {
+                $(document).ready(function() {
+                    document.getElementById("cameraId").src = noCameraUrl;
+                    setTimer(intervalTimeout);
+                    setCamera();
+                    try { Android.onDocumentReady(); }
+                    catch(error) {}
+                });
+            });
+
+            async function setCamera() {
+            console.log(cameraStreamUrl);
+                this.camera = new ESP32Camera('Camera #1', '192.168.1.11');
+                try {
+                    var response = await camera.getCameraSettings();
+                }
+                catch(error) {
+                    console.log(error);
+                }
+            }
+
+            async function test() {
+                try {
+                    var camera = new ESP32Camera('Camera #1', '192.168.1.11');
+                    var response = await camera.getCameraSettings();
+                    camera.show();
+                }
+                catch(error) {
+                    console.log(error);
+                }
+
+            }
+
+            function sendServerUrlInfo() {
+                var url =  localStorage.getItem('srvUrl');
+                try { Android.onLoad(url); }
+                catch(error) {}
+            }
+
+            function setServerUrl(serverUrl) {
+                if((serverUrl!=null) && (serverUrl!=='')) {
+                    serverUrl = serverUrl.toString();
+                    localStorage.setItem('srvUrl', serverUrl);
+                }
+            }
+
+            async function setResolution(resolution) {
+                if(camera!=null) {
+                    var response = await camera.setResolution(resolution);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getResolution() {
+                return this.camera.getFrameSize();
+            }
+
+            async function setCameraQuality(quality) {
+                if(camera!=null) {
+                    var response = await camera.setCameraQuality(quality);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getQuality() {
+                return this.camera.getQuality();
+            }
+
+            async function setCameraBrightness(brightness) {
+                if(camera!=null) {
+                    var response = await camera.setCameraBrightness(brightness);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getBrightness() {
+                return this.camera.getBrightness();
+            }
+
+            async function setCameraContrast(contrast) {
+                if(camera!=null) {
+                    var response = await camera.setCameraContrast(contrast);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getContrast() {
+                return this.camera.getContrast();
+            }
+
+            async function setCameraSaturation(saturation) {
+                if(camera!=null) {
+                    var response = await camera.setCameraSaturation(saturation);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getSaturation() {
+                return this.camera.getSaturation();
+            }
+
+            async function setCameraEffect(effect) {
+                if(camera!=null) {
+                    var response = await camera.setCameraEffect(effect);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getSpecialEffect() {
+                return this.camera.getSpecialEffect();
+            }
+
+            async function setCameraAWB(awb) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAWB(awb);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAWB() {
+                return this.camera.getAWB();
+            }
+
+            async function setCameraAWBGain(awbGain) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAWB(awbGain);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAWBGain() {
+                return this.camera.getAWB();
+            }
+
+            async function setCameraWBMode(wbMode) {
+                if(camera!=null) {
+                    var response = await camera.setCameraWBMode(wbMode);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getWBMode() {
+                return this.camera.getWBMode();
+            }
+
+            async function setCameraAEC(aec) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAEC(aec);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAEC() {
+                return this.camera.getAEC();
+            }
+
+            async function setCameraAEC2(aec2) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAEC2(aec2);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAEC2() {
+                return this.camera.getAEC2();
+            }
+
+            async function setCameraAELevel(aeLevel) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAELevel(aeLEvel);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAELevel() {
+                return this.camera.getAELevel();
+            }
+
+            async function setCameraAGC(agc) {
+                if(camera!=null) {
+                    var response = await camera.setCameraAGC(agc);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getAGC() {
+                return this.camera.getAGC();
+            }
+
+
+            async function setCameraHMirror(hMirror) {
+                if(camera!=null) {
+                    var response = await camera.setCameraHMirror(hMirror);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getHMirror() {
+                return this.camera.getHMirror();
+            }
+
+            async function setCameraVFlip(vFlip) {
+                if(camera!=null) {
+                    var response = await camera.setCameraVFlip(vFlip);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getColorBar() {
+                return this.camera.getColorBar();
+            }
+
+
+
+
+
+            async function setCameraColorBar(colorBar) {
+                if(camera!=null) {
+                    var response = await camera.setCameraColorBar(colorBar);
+                    try { Android.onCameraResponse(response); }
+                    catch(error) {}
+                }
+            }
+            function getColorBar() {
+                return this.camera.getColorBar();
+            }
+
+
+            function setTimer() {
+                console.log('setTimer()');
+                setInterval(checkCamera, intervalTimeout);
+            }
+
+
+            function checkCamera() {
+            console.log('checkCamera()');
+
+//                    if((serverUrl===null) || (serverUrl==='')) {
+//                        setServerUrl(localStorage.getItem("srUrl"));
+//                    }
+//                    const response = pingCamera(cameraStatusUrl, fetchTimeout);
+//                    console.log(response);
+                cameraActive = true;
+                refresh();
+                try { Android.onCameraStatus(cameraActive); }
+                catch(error) {}
+
+            }
+
+            async function pingCamera (url, timeout) {
+            var parent = this;
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeout);
+            var response = fetch("http://192.168.1.11", { method: 'GET', mode: 'no-cors', signal: controller.signal })
+                .then(() => {
+                    console.log('Camera OK');
+                    cameraActive = true;
+                    $("#cameraId").attr("style", style="-webkit-user-select: none; width:100%; background:transparent; transform:rotate(90deg); object-fit: cover");
+                    document.getElementById("cameraId").src = cameraStreamUrl;
+                    $("#cameraId").attr("src", cameraStreamUrl);
+//                        console.log(this.camera.getFrameSize());
+                    clearTimeout(timeoutId);
+                })
+                .catch(() => {
+                    console.log('NO Camera');
+                    cameraActive = false;
+                    $("#cameraId").attr("style", style="-webkit-user-select: none; width:100%; background:transparent; object-fit: cover");
+                    $("#cameraId").attr("src",  noCameraUrl);
+                    clearTimeout(timeoutId);
+                });
+            }
+
+            function refresh() {
+               location.reload();
+//                    history.go(0);
+            }
+
+        </script>
+
+</html>

@@ -1,0 +1,1093 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    android:background="@drawable/background_border_black"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+    <!-- Resolution -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingTop="1dp">
+
+        <TextView
+            android:id="@+id/lblResolution"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="25"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Resolution"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/lstResolutions"
+            style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="60"
+            android:background="@android:drawable/btn_dropdown"
+            android:popupElevation="16sp"
+            android:spinnerMode="dropdown"
+            android:textAlignment="viewEnd" />
+
+    </LinearLayout>
+
+    <!-- Quality -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="30"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Quality"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblQualityMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="10"
+            android:textAlignment="center"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="65"
+            android:max="63"
+            android:min="10"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblQualityMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="63"
+            android:textAlignment="center"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Brightness -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="20"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Brightness"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblBrightnessMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="-2"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbBrightness"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:max="2"
+            android:min="-2"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblBrightnessMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="+2"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Contrast -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblContrast"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="25"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Contrast"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblContrastMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="-2"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbContrast"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:max="2"
+            android:min="-2"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblContrastMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="+2"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Saturation -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblSaturation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="20"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Saturation "
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblSaturationMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="-2"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbSaturation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:max="2"
+            android:min="-2"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblSaturationMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="+2"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Special Effects -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingTop="1dp">
+
+        <TextView
+            android:id="@+id/lblSpecialEffect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="25"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Special Effect"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/lstSpecialEffects"
+            style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="95"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <!-- AWB & AWB Gain-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <!-- AWB -->
+        <Switch
+            android:id="@+id/swAWB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:padding="5dp"
+            android:text="AWB         "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- AWB Gain -->
+        <Switch
+            android:id="@+id/swAWBGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:checked="false"
+            android:padding="5dp"
+            android:text="AWB Gain"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- WB Mode -->
+    <LinearLayout
+        android:id="@+id/llWBMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingTop="1dp"
+        android:visibility="visible"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/lblWBMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="35"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="WB Mode"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/lstWBModes"
+            style="@style/Widget.AppCompat.Spinner.DropDown.ActionBar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_weight="75"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown" />
+
+    </LinearLayout>
+
+    <!-- AEC & AEC DSP -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <!-- AEC -->
+        <Switch
+            android:id="@+id/swAEC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:checked="false"
+            android:padding="5dp"
+            android:text="AEC          "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <!-- AEC DSP -->
+        <Switch
+            android:id="@+id/swAECDSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:checked="false"
+            android:padding="5dp"
+            android:text="AEC DSP "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- AE Level -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblAELevel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="20"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="AE Level  "
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblAELevelMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="-2"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbAELevel"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:max="2"
+            android:min="-2"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblAELevelMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="+2"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Exposure -->
+    <LinearLayout
+        android:id="@+id/llExposure"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblExposure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="20"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Exposure  "
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblExposureMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="0"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbExposure"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="70"
+            android:max="1200"
+            android:min="0"
+            android:progress="0" />
+
+        <TextView
+            android:id="@+id/lblExposureMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="1200"
+            android:textAlignment="viewEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- AGC -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <Switch
+            android:id="@+id/swAGC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="27"
+            android:checked="false"
+            android:padding="5dp"
+            android:text="AGC         "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:checked="false" />
+    </LinearLayout>
+
+    <!-- Gain (When AGC is OFF) -->
+    <LinearLayout
+        android:id="@+id/llAgcGain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100"
+        tools:visibility="visible">
+
+        <TextView
+            android:id="@+id/lblGain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="15"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Gain "
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblGainMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="1x"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbGain"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:max="31"
+            android:min="1"
+            android:progress="1" />
+
+        <TextView
+            android:id="@+id/lblGainMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="31x"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Gain Ceiling (When AGC is ON) -->
+    <LinearLayout
+        android:id="@+id/llGainCeiling"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblGainCeiling"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="15"
+            android:gravity="start|top|center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="5dp"
+            android:text="Gain Ceiling"
+            android:textAlignment="textStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/lblGainCeilingMin"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="2x"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <SeekBar
+            android:id="@+id/sbGainCeiling"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="80"
+            android:max="128"
+            android:min="2"
+            android:progress="2" />
+
+        <TextView
+            android:id="@+id/lblGainCeilingMax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:padding="5dp"
+            android:text="128x"
+            android:textAlignment="textEnd"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- BPC -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <Switch
+            android:id="@+id/swBPC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:checked="false"
+            android:padding="5dp"
+            android:text="BPC      "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- WPC
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblWPC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:text="WPC"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swWPC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:padding="5dp"
+            android:textAlignment="viewStart"
+            android:textStyle="bold" />
+    </LinearLayout>
+    -->
+
+    <!-- WPC -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <!--TextView
+            android:id="@+id/lblWPC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="50"
+            android:text="WPC"
+            android:textAlignment="viewStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" /-->
+
+        <Switch
+            android:id="@+id/swWPC"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:checked="false"
+            android:padding="2dp"
+            android:text="WPC      "
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+   </LinearLayout>
+
+    <!-- Raw GMA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:weightSum="200">
+
+        <TextView
+            android:id="@+id/lblRawGMA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:padding="1dp"
+            android:text="Raw GMA"
+            android:textAlignment="viewStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swRawGMA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:checked="false"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Lens Correction -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblLensCorrection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Lens Correction"
+            android:textAlignment="viewStart"
+            android:textColor="@color/lightGray"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swLensCorrection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="6"
+            android:checked="false"
+            android:padding="5dp"
+            android:textAlignment="viewStart"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <!-- H-Mirror & V-Flip -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <!-- H-Mirror -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="horizontal"
+                android:paddingStart="5dp">
+
+                <TextView
+                    android:id="@+id/blHMirror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="H-Mirror"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/swHMirror"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:checked="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblVFlip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:text="V-Flip"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/swVFlip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="50"
+                    android:checked="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- V-Flip -->
+    </LinearLayout>
+
+    <!-- DCW (Downsize EN) -->
+
+
+    <!-- ColorBar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:weightSum="100">
+
+        <TextView
+            android:id="@+id/lblDCW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="DCW Downsize"
+            android:textAlignment="viewStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swDCW"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:checked="false"
+            android:padding="5dp"
+            android:textAlignment="viewStart"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:paddingStart="5dp"
+        android:weightSum="200">
+
+        <TextView
+            android:id="@+id/lblColorBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:text="Color Bar"
+            android:textAlignment="viewStart"
+            android:textColor="@color/lightGray"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <Switch
+            android:id="@+id/swColorBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="25"
+            android:checked="false"
+            android:paddingStart="5dp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Face Detection & Face Recognition  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@android:color/transparent"
+        android:orientation="horizontal"
+        android:weightSum="100">
+        <!-- Face Detection -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="horizontal"
+                android:paddingStart="5dp">
+
+                <TextView
+                    android:id="@+id/lblFaceDetection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="55"
+                    android:text="Face Detection"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/swFaceDetection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
+                    android:checked="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Face Recognition -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="50"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="50"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblFaceRecognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="55"
+                    android:text="Face Recognition"
+                    android:textAlignment="viewStart"
+                    android:textColor="@color/lightGray"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/swFaceRecognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="45"
+                    android:checked="false"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,102 @@
+<!DOCTYPE html><html xmlns:zoom="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta name="viewport" content="width=device-width, minimum-scale=0.1">
+    <!-- meta http-equiv="refresh" content="5" -->
+</head>
+<!-- <script type="text/javascript" src="src='https://code.jquery.com/jquery-3.3.1.min.js'"></script-->
+<script type="text/javascript" src="jquery-3.1.0/jquery-3.1.0.js"></script>
+<!-- script type="text/javascript" src="OV2640Camera.js"></script -->
+</head>
+
+<script>
+        var serverUrl = ''              // 'http://192.168.1.11';
+        var cameraStreamUrl = '';       // 'http://192.168.1.11/mjpeg/1';
+        var cameraStatusUrl = '';  	    // 'http://192.168.1.11/status';
+        var cameraControlUrl = '';      // 'http://192.168.1.11/control';
+        var intervalTimeout = 5000;     // Interval for periodic Camera Ping Timer
+        var fetchTimeout = 1500;        // Timeout for ping Request
+        var cameraActive = false;       // Camera main Status
+        $(function() {
+            $(document).ready(function() {
+                console.log("DOCUMENT_READY: " + cameraStreamUrl);
+                setCameraServerUrl("http://192.168.1.11");
+                setTimer(intervalTimeout);
+                // Send DOCUMENT_READY Notification to Android
+                try { Android.onDocumentReady(); }
+                catch(error) {}
+            });
+        });
+
+        function setCameraServerUrl(serverUrl) {
+            console.log("setCameraServerUrl(" + serverUrl + ")");
+            if((serverUrl!=null) && (serverUrl!=='')) {
+                this.serverUrl = serverUrl;
+                localStorage.setItem('serverUrl',this.serverUrl);
+                this.cameraStreamUrl = this.serverUrl + '/mjpeg/1';
+                this.cameraStatusUrl = this.serverUrl + '/status';
+                this.cameraControlUrl = this.serverUrl + '/control';
+                $("#cameraId").attr("src", this.cameraStreamUrl);
+                console.log("setServerUrl(" + this.cameraStreamUrl + ")");
+            }
+            else {
+                console.log("Invalid Camera Url ...");
+            }
+        }
+
+        function setTimer() {
+            console.log('setTimer()');
+            setInterval(pingCamera, intervalTimeout);
+        }
+
+        async function pingCamera () {
+        var parent = this;
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), fetchTimeout);
+        var response = await fetch(serverUrl, { headers: { 'Access-Control-Allow-Origin':'*' }, method: 'GET', mode: 'no-cors', cache: 'no-cache', signal: controller.signal })
+            .then(() => {
+                console.log('Camera OK');
+                cameraActive = true;
+                try { Android.onCameraStatus(cameraActive); }
+                catch(error) {}
+                clearTimeout(timeoutId);
+            })
+            .catch(() => {
+                console.log('NO Camera');
+                cameraActive = false;
+                try { Android.onCameraStatus(cameraActive); }
+                catch(error) {}
+                clearTimeout(timeoutId);
+            });
+            showCamera();
+        }
+
+        function showCamera() {
+            if(cameraActive==true) {
+                $("#noCameraDiv").attr("display", "none");
+                $("#cameraDiv").attr("display", "block");
+            }
+            else {
+                $("#noCameraDiv").attr("display", "block");
+                $("#cameraDiv").attr("display", "none");
+            }
+            $( "#mainDiv" ).load(window.location.href + " #mainDiv" );
+        }
+
+    </script>
+
+
+<body id="body" onload="" style="margin: 0px; background: black;">
+    <div id="mainDiv">
+        <div id="cameraDiv" style="display: block;">
+            <img id="cameraId" src="" style="-webkit-user-select: none; width:100%; background:transparent; transform:rotate(90deg); object-fit: cover">
+        </div>
+        <div id="noCameraDiv" style="display: none;">
+            <img id="noCameraId" src="img/no_camera.png" style="-webkit-user-select: none; width:100%; background:transparent; object-fit: cover">
+        </div>
+    </div>
+</body>
+
+</body>
+
+</html>

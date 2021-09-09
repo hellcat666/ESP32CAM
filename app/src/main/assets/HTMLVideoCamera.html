@@ -1,0 +1,52 @@
+<!DOCTYPE html><html xmlns:zoom="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <!-- meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,target-densityDpi=device-dpi" / -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+        <!-- meta name="viewport" content="width=device-width, minimum-scale=0.1" -->
+        <!-- meta http-equiv="refresh" content="5" -->
+    </head>
+        <!-- <script type="text/javascript" src="src='https://code.jquery.com/jquery-3.3.1.min.js'"></script-->
+        <script type="text/javascript" src="jquery-3.1.0/jquery-3.1.0.js"></script>
+        <!-- script type="text/javascript" src="OV2640Camera.js"></script -->
+    </head>
+
+    <script>
+        var requestString = '';
+        var requestUrl;
+        var cameraStreamUrl = '';       // 'http://192.168.1.11/mjpeg/1';
+        $(function() {
+            $(document).ready(function() {
+                requestString = window.location.href;
+                requestUrl = new URL(requestString);
+                console.log("DOCUMENT_READY: " + requestUrl);
+                cameraStreamUrl = requestUrl.searchParams.get("url");
+                setCameraStreamUrl();
+                // Send DOCUMENT_READY Notification to Android
+                try { Android.onDocumentReady(); }
+                catch(error) {}
+            });
+        });
+
+        function setCameraStreamUrl() {
+            console.log("setCameraStreamUrl");
+            if((cameraStreamUrl!=null) && (cameraStreamUrl!=='')) {
+//                localStorage.setItem('streamUrl',this.streamUrl);
+                $("#cameraId").attr("src", cameraStreamUrl);
+                console.log("setServerUrl(" + this.cameraStreamUrl + ")");
+            }
+            else {
+                console.log("Invalid Camera Url ...");
+            }
+        }
+
+    </script>
+
+
+    <body id="body" onload="" style="margin: 0px; background: black;">
+        <!-- div id="cameraDiv" -->
+        <img id="cameraId" src="" style="-webkit-user-select: none; width:100%; background:transparent; transform:rotate(90deg); object-fit: fill">
+        <!-- /div -->
+    </body>
+
+</html>
