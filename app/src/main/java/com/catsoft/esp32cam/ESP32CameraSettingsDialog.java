@@ -26,6 +26,9 @@ import android.widget.Switch;
 
 import com.catsoft.esp32cam.ov2640.OV2640Settings;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static com.catsoft.esp32cam.ov2640.OV2640Constants.AEC;
 import static com.catsoft.esp32cam.ov2640.OV2640Constants.AEC2;
 import static com.catsoft.esp32cam.ov2640.OV2640Constants.AEC_VALUE;
@@ -75,8 +78,48 @@ public class ESP32CameraSettingsDialog {
     public final static String TAG = "ESP32CameraSettingsDlg";
 
     // Defined Array values to show in ListView
+    public enum Framesize {
+        QQVGA("QQVGA (160x120)", 0),
+        HQVGA("HQVGA (240x176)",3),
+        QVGA("QVGA (320x240)",4),
+        CIF("CIF (400x296)",5),
+        VGA("VGA (640x480)",6),
+        SVGA("SVGA (800x600)", 7),
+        XGA("XGA (1024x768)", 8),
+        SXGA("SXGA (1280x1024)", 9),
+        UXGA("UXGA (1600x1200)", 10);
+
+        private static final Map<String, Framesize> BY_LABEL = new HashMap<>();
+        private static final Map<Integer, Framesize> BY_VALUE = new HashMap<>();
+
+        static {
+            for (Framesize f : values()) {
+                BY_LABEL.put(f.label, f);
+                BY_VALUE.put(f.value, f);
+            }
+        }
+
+        public final String label;
+        public final int value;
+
+        private Framesize(String label, int value) {
+            this.label = label;
+            this.value = value;
+        }
+
+        public static Framesize label(String label) {
+            return BY_LABEL.get(label);
+        }
+
+        public static Framesize value(int number) {
+            return BY_VALUE.get(number);
+        }
+    }
+
     String[] resolutions = new String[] {
             "QQVGA (160x120)",
+            "UNUSED (???x???)",
+            "UNUSED (???x???)",
             "HQVGA (240x176)",
             "QVGA (320x240)",
             "CIF (400x296)",
@@ -193,9 +236,14 @@ public class ESP32CameraSettingsDialog {
         lstResolutions.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(mOV2640Settings!=null) mOV2640Settings.setFramesize(position);
-                if((mDialog!=null) && (mDialog.isShowing()))
-                    setSetting(FRAMESIZE, String.valueOf( position ));
+                if(position==0 || position>2) {
+                    if (mOV2640Settings != null) mOV2640Settings.setFramesize( position );
+                    if ((mDialog != null) && (mDialog.isShowing()))
+                        setSetting( FRAMESIZE, String.valueOf( position ) );
+                }
+                else {
+                    lstResolutions.setSelection(mOV2640Settings.getFramesize());
+                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) {}
@@ -554,7 +602,7 @@ public class ESP32CameraSettingsDialog {
 
     private void refresh() {
         if(mOV2640Settings!=null) {
-            lstResolutions.setSelection( mOV2640Settings.getFramesize() );
+            lstResolutions.setSelection( mOV2640Settings.getFramesize());
 
             sbQuality.setProgress( mOV2640Settings.getQuality());
             sbBrightness.setProgress( mOV2640Settings.getBrightness());
